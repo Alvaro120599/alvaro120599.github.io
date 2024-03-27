@@ -1,0 +1,6 @@
+Flask==2.3.3
+Flask-Migrate==4.0.5
+httpie==3.2.2
+ipython
+mysqlclient==2.2.0
+psycopg2
