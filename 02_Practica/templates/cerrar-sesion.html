@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Eliminar Post</title>
+{% endblock %}
+
+{% block content %}
+
+<form method="POST">
+    <h2>¿Está seguro que desea cerrar sesion </h2>
+      <button type="submit" class="btn btn-success">Cerrar Sesion</button>
+  </form>
+  <hr>
+  <a class="btn btn-cerrar" href="{{ url_for('index_user', id_user = id) }}">Volver</a>
+
+{% endblock %}

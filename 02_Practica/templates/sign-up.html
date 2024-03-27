@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}<title>Registar</title>
+{% endblock %}
+
+{% block content %}
+<form method="POST">
+    <label for="username">Usuario:</label>
+    <input type="text" id="usuario" name="usuario" required>
+
+    <label for="password">Contraseña:</label>
+    <input type="password" id="contraseña" name="contraseña" required>
+
+    <button type="submit">Crear Cuenta</button>
+</form>
+{% if error %}
+    <h1>{{ error }} </h1>
+{% endif %}
+<a class="btn btn sign up" href="{{ url_for('index')}}">Volver</a>
+{% endblock %}

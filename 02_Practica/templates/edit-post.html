@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}<title>Mi Muro</title>
+{% endblock %}
+
+
+{% block content %}
+
+<form method="POST">
+    <label for="post">Editar Post : {{ post }}</label>
+    <input type="text" id="post" name="post" required>
+
+    <button type="submit"> Editar </button>
+</form>
+
+
+{% endblock %}

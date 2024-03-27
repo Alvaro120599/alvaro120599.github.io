@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% block title %}<title>Mi Muro</title>
+{% endblock %}
+
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Muro</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 100px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            text-decoration: none;
+            color: #fff;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Mi Muro</h1>
+
+        <a href="{{ url_for('index_user', id_user = id) }}" class="btn">Ir a la Página Principal</a>
+        <a href="{{ url_for('crear_post', id_user = id) }}" class="btn">Crear un Post</a>
+    </div>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Posts y Comentarios</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .post {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        textarea {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        .comment {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    {% for mi_post in post %}
+    <div class="post">
+        <textarea readonly>{{ mi_post.content }}</textarea>
+        <h2>Comentarios</h2>
+        {% for coment in comentarios %}
+            {% if coment.id_post == mi_post.id_post %}
+        <div class="comment">
+            <p>{{ coment.content}}</p>
+        </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+     <a class="btn btn-Eliminar" href="{{ url_for('delete_post', id_post = mi_post.id_post) }}">Eliminar Post</a>
+    <a class="btn btn-Editar" href="{{ url_for('editar', id_post = mi_post.id_post) }}">Editar Post</a>
+{% endfor %}
+
+
+</body>
+</html>
+
+{% endblock %}

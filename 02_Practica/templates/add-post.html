@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Pagina Principal</title>
+{% endblock %}
+
+{% block content %}
+
+<form method="POST">
+    <label for="comentario">Ingrese Post:</label>
+    <input type="text" id="post" name="post" required>
+
+    <button type="submit"> Postear </button>
+</form>
+
+
+
+{% endblock %}

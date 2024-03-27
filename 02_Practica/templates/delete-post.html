@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Eliminar Post</title>
+{% endblock %}
+
+{% block content %}
+
+<form method="POST">
+    <h2>¿Está seguro que desea borrar este post {{ post.content }}?</h2>
+      <button type="submit" class="btn btn-success">Borrar Post</button>
+  </form>
+  <hr>
+  <a class="btn btn-info" href="{{ url_for('usuario_muro', id = post.id_user) }}">Volver al listado de mis posts</a>
+
+{% endblock %}

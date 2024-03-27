@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Pagina Principal</title>
+{% endblock %}
+
+{% block sesion %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Usuario</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .header {
+            background-color: #333;
+            padding: 10px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            color: #fff;
+        }
+
+        .view-posts-btn, .logout-btn {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+            text-decoration: none;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <a  href="{{ url_for('usuario_muro', id = id) }}"  class="view-posts-btn">Ver Mi Muro</a>
+        <a href="{{ url_for('cerrar_sesion', user_id = id) }}" class="logout-btn">Cerrar Sesion</a>
+    </div>
+
+
+</body>
+</html>
+
+{% endblock %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles del Post</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .post-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .user-info {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .post-text {
+            margin-bottom: 20px;
+        }
+
+        .comment {
+            border-top: 1px solid #ccc;
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    {% for mi_post in post %}
+    <div class="post-container">
+        <div class="user-info">
+            {% for usuario in usuarios %}
+                {% if usuario.id_user == mi_post.id_user %}
+            Usuario: <span id="usuario">{{ usuario.usuario }}</span>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="post-text">
+            <p id="texto-post">{{ mi_post.content }}</p>
+        </div>
+        
+        <h2>Comentarios</h2>
+
+        <div class="comment">
+            {% for coment in comentarios %}
+                {% if coment.id_post == mi_post.id_post %}
+                    <p id="texto-comentario">{{ coment.content}}.</p>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        
+        <a class="btn btn-cerrar" href="{{ url_for('comentar', id_post = mi_post.id_post, id_user = id) }}">Comentar</a>
+    </div>
+    {% endfor %}
+    
+</body>
+</html>
+{% endblock %}
