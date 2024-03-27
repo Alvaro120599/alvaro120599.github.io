@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>{{ user.name }}</title>
+{% endblock %}
+
+{% block body %}
+
+<form>
+    <div class="mb-3">
+      <label class="form-label">Name</label>
+      <input type="text" class="form-control" value="{{ user.name}}">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Age</label>
+      <input type="text" class="form-control" value="{{ user.age}}">
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Language</label>
+        <input type="text" class="form-control" value="{{ user.language}}">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  <a class="btn btn-info" href="{{ url_for('users') }}">Volver al listado de usuarios</a>
+
+{% endblock %}

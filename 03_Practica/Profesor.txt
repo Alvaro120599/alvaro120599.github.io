@@ -1,0 +1,3 @@
+Profesor para la parte de las rutas para los comentarios donde pedia crear un comentario y ver los comentarios, eso no deberia estar asociado a un post. Yo no pude asistir a la clase del jueves por eso me queda esa duda y en mi codigo si le añadi porque no le veria sentido crear un comentario que seria lo mismo que crear un post, por eso en mi codigo si le añadi eso osea
+en el GET te devuelva los comentarios del post el cual mande su id
+y en el POST le añada el comentario al post del cual le pase su id.

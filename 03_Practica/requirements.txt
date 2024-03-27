@@ -1,0 +1,15 @@
+boto3==1.28.55
+Flask==2.3.3
+httpie==3.2.2
+pypdf==3.16.2
+ipython
+requests==2.31.0
+Flask-SQLAlchemy==3.1.1
+mysqlclient==2.2.0
+Flask-Migrate==4.0.5
+flask-restful
+flask-restful-swagger
+flask-marshmallow
+flask-socketio
+gunicorn
+gevent
