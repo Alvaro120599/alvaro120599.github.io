@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Users</title>
+{% endblock %}
+
+{% block body %}
+
+<a href="{{ url_for('users_add') }}" class="btn btn-info">Agregar usuario</a>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Age</th>
+        <th scope="col">Content</th>
+        <th scope="col">Created at</th>
+        <th scope="col">Opciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for user in users %}
+      <tr>
+        <th scope="row">{{ user.id }}</th>
+        <td>{{ user.name|title }}</td>
+        <td>{{ user.age }}</td>
+        {% if user.content %}
+        <td>{{ user.content|safe }}</td>
+        {% else %}
+        <td>-_-</td>
+        {% endif %}
+        <td>{{ user.created_at.strftime("%Y-%m-%d %I:%M") }}</td>
+        <td>
+          <a class="btn btn-info" href="{{ url_for('users_by_id', id=user.id) }}">Ver detalle</a>
+          <a class="btn btn-danger" href="{{ url_for('users_delete', id=user.id) }}">Eliminar</a>
+          <a class="btn btn-success" href="{{ url_for('messages_by_user', user_id=user.id) }}">Ver mensajes</a>
+          <a class="btn btn-success" href="{{ url_for('messages_by_user_add', user_id=user.id) }}">Agregar mensaje</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock %}

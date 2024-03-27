@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Users</title>
+{% endblock %}
+
+{% block body %}
+
+<a href="" class="btn btn-info">Agregar mensaje</a>
+
+{% if messages %}
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Content</th>
+        <th scope="col">Created at</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for message in messages %}
+      <tr>
+        <th scope="row">{{ message.id }}</th>
+        <td>{{ message.content|safe }}</td>
+        <td>{{ message.created_at.strftime("%Y-%m-%d %I:%M") }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endif %}
+<a class="btn btn-info" href="{{ url_for('users') }}">Volver al listado de usuarios</a>
+
+{% endblock %}

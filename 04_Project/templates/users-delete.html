@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Borrar usuario</title>
+{% endblock %}
+
+{% block body %}
+
+<form method="post">
+    <h2>¿Está seguro que desea borrar el usuario {{ user.name }} con ID {{ user.id }}?</h2>
+      <button type="submit" class="btn btn-success">Borrar usuario</button>
+  </form>
+  <hr>
+  <a class="btn btn-info" href="{{ url_for('users') }}">Volver al listado de usuarios</a>
+
+{% endblock %}
